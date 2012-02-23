@@ -1,0 +1,16 @@
+Build.PL
+Changes
+LICENSE
+MANIFEST
+MANIFEST.SKIP
+META.yml
+README
+dist.ini
+lib/Perinci/BashComplete.pm
+t/00-compile.t
+t/bash_complete_riap_func_arg.t
+t/complete_array.t
+t/complete_hash_key.t
+t/complete_riap_func.t
+t/release-pod-coverage.t
+t/release-pod-syntax.t

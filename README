@@ -1,0 +1,42 @@
+NAME
+    Perinci::BashComplete - Bash completion routines for function & function
+    argument over Riap
+
+VERSION
+    version 0.19
+
+SYNOPSIS
+     # require'd by Sub::Spec::CmdLine when bash completion is enabled
+
+DESCRIPTION
+    This module provides functionality for doing bash completion. It is
+    meant to be used by Sub::Spec::CmdLine, but nevertheless some routines
+    are reusable outside it.
+
+FUNCTIONS
+    None of the functions are exported by default, but they are exportable.
+
+BUGS/LIMITATIONS/TODOS
+    Due to parsing limitation (invokes subshell), can't complete unclosed
+    quotes, e.g.
+
+     foo "bar <tab>
+
+    while shell function can complete this because they are provided
+    COMP_WORDS and COMP_CWORD by bash.
+
+SEE ALSO
+    Perinci::CmdLine, Riap
+
+    Other bash completion modules on CPAN: Getopt::Complete,
+    Bash::Completion.
+
+AUTHOR
+    Steven Haryanto <stevenharyanto@gmail.com>
+
+COPYRIGHT AND LICENSE
+    This software is copyright (c) 2012 by Steven Haryanto.
+
+    This is free software; you can redistribute it and/or modify it under
+    the same terms as the Perl 5 programming language system itself.
+

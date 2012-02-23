@@ -1,0 +1,115 @@
+Revision history for Perinci-BashComplete
+
+0.19     2012-02-23
+
+         Rename distribution from Sub-Spec-BashComplete to Perinci-BashComplete.
+         Follow Rinci v1.1 specification.
+
+
+0.18     2011-11-23
+
+         No functional changes. _parse_schema() moved from Data::Sah::Util to
+         normalize_schema() in Data::Sah.
+
+
+0.17     2011-10-31
+
+         No functional changes. _parse_schema() is moved from Sub::Spec::Utils
+         to Data::Sah::Util.
+
+
+0.16     2011-08-25
+
+         No functional changes. Adjust to Sub::Spec 0.15.
+
+
+0.15     2011-07-26
+
+         No functional changes. Adjust to use the new Sub::Spec::GetArgs::Argv.
+
+
+0.14     2011-05-31
+
+         No functional changes.
+
+         [ETC]
+
+         - Skip tests on systems which don't have bash.
+
+
+0.13     2011-02-23
+
+         Add missing dependency: Log::Any [CT].
+
+
+0.12     2011-02-23
+
+         Add missing dependency: Sub::Spec::CmdLine [CT].
+
+
+0.11     2011-02-22
+
+         Use Sub::Spec::Utils.
+
+
+0.10     2011-02-19
+
+         Incompatible change: arg_complete & custom_completer now expected to
+         return arrayref instead of list.
+
+         More fixes for remaining_words for custom_completer.
+
+
+0.09     2011-02-18
+
+         Handle backspaced whitespace.
+
+         Don't escape output (let completer program do it) to avoid double
+         escaping.
+
+         Fix cword & remaining_words for custom_completer.
+
+
+0.08     2011-02-18
+
+         Backslash-escape output.
+
+         Spec: cmdline_aliases renamed to arg_aliases.
+
+
+0.07     2011-02-17
+
+         bash_complete_spec_arg(): Also add --nofoo completion for bool
+         cmdline_aliases.
+
+
+0.06     2011-02-17
+
+         bash_complete_spec_arg(): Add 'custom_completer' option, parse
+         'cmdline_aliases' in arg spec.
+
+
+0.05     2011-02-17
+
+         Fix cword counting.
+
+
+0.04     2011-02-16
+
+         Small fix on detecting arg name/value.
+
+
+0.03     2011-02-16
+
+         Complete arg name instead of value if user type '-' (indicates he/she
+         wants arg name).
+
+
+0.02     2011-02-16
+
+         Fix dependency version (requires Sub::Spec::CmdLine 0.10+).
+
+
+0.01     2011-02-16
+
+         First release.
