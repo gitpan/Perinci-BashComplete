@@ -17,13 +17,13 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-BashComplete",
-  "dist_version" => "0.19",
+  "dist_version" => "0.20",
   "license" => "perl",
   "module_name" => "Perinci::BashComplete",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Data::Sah" => 0,
+    "Data::Sah" => "0.02",
     "File::Which" => 0,
     "Log::Any" => 0,
     "Perinci::Access" => "0.03",
