@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Log::Any '$log';
 
-our $VERSION = '0.23'; # VERSION
+our $VERSION = '0.24'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -217,16 +217,25 @@ sub complete_file {
     my $f     = $args{f} // 1;
     my $d     = $args{d} // 1;
 
-    $word =~ s!/+$!!;
+    my @all;
+    if ($word =~ m!(\A|/)\z!) {
+        my $dir = length($word) ? $word : ".";
+        opendir my($dh), $dir or return [];
+        @all = grep { $_ ne '.' && $_ ne '..' } readdir($dh);
+        closedir $dh;
+    } else {
+        # must add wildcard char, glob() is convoluted. also {a,b} is
+        # interpreted by glob() (not so by bash file completion). also
+        # whitespace is interpreted by glob :(. later should replace with a
+        # saner one, like wildcard2re.
+        @all = grep {length} glob("$word*");
+    }
 
     my @words;
-    opendir my($dh), "." or return [];
-    for (readdir($dh)) {
-        next if $word !~ /^\.\.?$/ && ($_ eq '.' || $_ eq '..');
-        next unless index($_, $word) == 0;
+    for (@all) {
         next if (-f $_) && !$f;
         next if (-d _ ) && !$d;
-        push @words, (-d _) ? "$_/" : $_;
+        push @words, (-d _) && !m!/\z! ? "$_/" : $_;
     }
 
     complete_array(array=>\@words);
@@ -648,7 +657,7 @@ Perinci::BashComplete - Bash completion routines for function & function argumen
 
 =head1 VERSION
 
-version 0.23
+version 0.24
 
 =head1 SYNOPSIS
 
