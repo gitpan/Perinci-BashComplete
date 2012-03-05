@@ -26,4 +26,4 @@ requires:
 resources:
   homepage: http://search.cpan.org/dist/Perinci-BashComplete/
   repository: http://github.com/sharyanto/perl-Perinci-BashComplete
-version: 0.24
+version: 0.25
