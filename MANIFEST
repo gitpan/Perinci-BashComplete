@@ -8,6 +8,7 @@ README
 dist.ini
 lib/Perinci/BashComplete.pm
 t/00-compile.t
+t/_line_to_argv.t
 t/bash_complete_riap_func_arg.t
 t/complete_array.t
 t/complete_hash_key.t
