@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Log::Any '$log';
 
-our $VERSION = '0.26'; # VERSION
+our $VERSION = '0.27'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -221,7 +221,8 @@ sub complete_file {
     if ($word =~ m!(\A|/)\z!) {
         my $dir = length($word) ? $word : ".";
         opendir my($dh), $dir or return [];
-        @all = map { "$dir$_" } grep { $_ ne '.' && $_ ne '..' } readdir($dh);
+        @all = map { ($dir eq '.' ? '' : $dir) . $_ }
+            grep { $_ ne '.' && $_ ne '..' } readdir($dh);
         closedir $dh;
     } else {
         # must add wildcard char, glob() is convoluted. also {a,b} is
@@ -236,11 +237,18 @@ sub complete_file {
         next if (-f $_) && !$f;
         next if (-d _ ) && !$d;
         $_ = "$_/" if (-d _) && !m!/\z!;
-        s!.+/(.+)!$1!;
+        #s!.+/(.+)!$1!;
         push @words, $_;
     }
 
-    complete_array(array=>\@words);
+    my $w = complete_array(array=>\@words);
+
+    # this is a trick so that when completion is a single dir/, bash does not
+    # insert a space but still puts the cursor after "/", just like when it's
+    # doing dir completion.
+    if (@$w == 1 && $w->[0] =~ m!/\z!) { $w->[1] = "$w->[0] ";  }
+
+    $w;
 }
 
 sub _get_pa {
@@ -659,7 +667,7 @@ Perinci::BashComplete - Bash completion routines for function & function argumen
 
 =head1 VERSION
 
-version 0.26
+version 0.27
 
 =head1 SYNOPSIS
 
