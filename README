@@ -3,7 +3,7 @@ NAME
     argument over Riap
 
 VERSION
-    version 0.27
+    version 0.28
 
 SYNOPSIS
      # require'd by Sub::Spec::CmdLine when bash completion is enabled

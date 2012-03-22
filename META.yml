@@ -16,14 +16,15 @@ name: Perinci-BashComplete
 requires:
   Data::Sah: 0.02
   File::Which: 0
+  File::chdir: 0
   Log::Any: 0
   Perinci::Access: 0.03
   Perinci::Examples: 0.08
-  Perinci::Sub::GetArgs::Argv: 0.12
+  Perinci::Sub::GetArgs::Argv: 0.13
   Rinci: 1.1.10
   UUID::Random: 0
   perl: 5.010000
 resources:
   homepage: http://search.cpan.org/dist/Perinci-BashComplete/
   repository: http://github.com/sharyanto/perl-Perinci-BashComplete
-version: 0.27
+version: 0.28

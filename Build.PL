@@ -17,7 +17,7 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-BashComplete",
-  "dist_version" => "0.27",
+  "dist_version" => "0.28",
   "license" => "perl",
   "module_name" => "Perinci::BashComplete",
   "recommends" => {},
@@ -25,10 +25,11 @@ my %module_build_args = (
   "requires" => {
     "Data::Sah" => "0.02",
     "File::Which" => 0,
+    "File::chdir" => 0,
     "Log::Any" => 0,
     "Perinci::Access" => "0.03",
     "Perinci::Examples" => "0.08",
-    "Perinci::Sub::GetArgs::Argv" => "0.12",
+    "Perinci::Sub::GetArgs::Argv" => "0.13",
     "Rinci" => "1.1.10",
     "UUID::Random" => 0,
     "perl" => "5.010000"

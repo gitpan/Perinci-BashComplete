@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Log::Any '$log';
 
-our $VERSION = '0.27'; # VERSION
+our $VERSION = '0.28'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -621,6 +621,7 @@ sub bash_complete_riap_func_arg {
                 push @a, $_ for keys %{$as->{cmdline_aliases}};
             }
             for my $a (@a) {
+                $a =~ s/[_.]/-/g;
                 my @w;
                 my $type = $as->{schema}[0];
                 if ($type eq 'bool' && length($a) > 1 &&
@@ -667,7 +668,7 @@ Perinci::BashComplete - Bash completion routines for function & function argumen
 
 =head1 VERSION
 
-version 0.27
+version 0.28
 
 =head1 SYNOPSIS
 
