@@ -7,7 +7,10 @@ use Module::Build 0.3601;
 
 my %module_build_args = (
   "build_requires" => {
-    "Module::Build" => "0.3601"
+    "File::Which" => 0,
+    "File::chdir" => 0,
+    "Module::Build" => "0.3601",
+    "Perinci::Examples" => "0.08"
   },
   "configure_requires" => {
     "Module::Build" => "0.3601"
@@ -17,18 +20,15 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-BashComplete",
-  "dist_version" => "0.28",
+  "dist_version" => "0.29",
   "license" => "perl",
   "module_name" => "Perinci::BashComplete",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
     "Data::Sah" => "0.02",
-    "File::Which" => 0,
-    "File::chdir" => 0,
     "Log::Any" => 0,
     "Perinci::Access" => "0.03",
-    "Perinci::Examples" => "0.08",
     "Perinci::Sub::GetArgs::Argv" => "0.13",
     "Rinci" => "1.1.10",
     "UUID::Random" => 0,
