@@ -1,11 +1,11 @@
 package Perinci::BashComplete;
 
-use 5.010;
+use 5.010001;
 use strict;
 use warnings;
 use Log::Any '$log';
 
-our $VERSION = '0.29'; # VERSION
+our $VERSION = '0.30'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -51,8 +51,11 @@ sub _line_to_argv {
 
 # parse COMP_LINE and COMP_POINT
 sub _parse_request {
-    my ($line, $point) = @_;
+    my ($line, $point, $opts) = @_;
     $log->tracef("-> _parse_request(%s, %s)", $line, $point);
+    $opts //= {};
+    $opts->{parse_line_sub} //= \&_line_to_argv;
+
 
     $line  //= $ENV{COMP_LINE};
     $point //= $ENV{COMP_POINT};
@@ -61,7 +64,7 @@ sub _parse_request {
     my $left  = substr($line, 0, $point);
     my @left;
     if (length($left)) {
-        @left = _line_to_argv($left);
+        @left = $opts->{parse_line_sub}->($left);
         # shave off $0
         substr($left, 0, length($left[0])) = "";
         $left =~ s/^\s+//;
@@ -72,7 +75,7 @@ sub _parse_request {
     my @right;
     if (length($right)) {
         $right =~ s/^\S+//;
-        @right = _line_to_argv($right) if length($right);
+        @right = $opts->{parse_line_sub}->($right) if length($right);
     }
     $log->tracef("left=q(%s), \@left=%s, right=q(%s), \@right=%s",
                  $left, \@left, $right, \@right);
@@ -280,7 +283,7 @@ _
             summary => 'Base URL, should point to a package code entity',
             description => <<'_',
 
-Examples would be: '/' (or 'pm:/'), '/Company/API/', 'http://example.com/api/'
+Examples would be: '/' (or 'pl:/'), '/Company/API/', 'http://example.com/api/'
 
 _
             schema=>'str*',
@@ -362,7 +365,7 @@ _
             description => <<'_',
 
 Examples would be: '/Perinci/Examples/gen_array' (or
-'pm:/Perinci/Examples/gen_array') or 'http://example.com/api/some_func'
+'pl:/Perinci/Examples/gen_array') or 'http://example.com/api/some_func'
 
 _
             schema=>'str*',
@@ -428,7 +431,9 @@ _
             schema=>['any*' => {
                 of => [
                     'code*',
-                    ['hash*'=>{values_of=>'code*'}],
+                    ['hash*'=>{
+                        #values=>'code*', # temp: disabled, not supported yet by Data::Sah
+                    }],
                 ]}],
         },
         common_opts => {
@@ -665,8 +670,8 @@ sub bash_complete_riap_func_arg {
 1;
 # ABSTRACT: Bash completion routines for function & function argument over Riap
 
-
 __END__
+
 =pod
 
 =head1 NAME
@@ -675,17 +680,19 @@ Perinci::BashComplete - Bash completion routines for function & function argumen
 
 =head1 VERSION
 
-version 0.29
+version 0.30
 
 =head1 SYNOPSIS
 
- # require'd by Sub::Spec::CmdLine when bash completion is enabled
+ # require'd by Perinci::CmdLine when bash completion is enabled
 
 =head1 DESCRIPTION
 
 This module provides functionality for doing bash completion. It is meant to be
-used by L<Sub::Spec::CmdLine>, but nevertheless some routines are reusable
-outside it.
+used by L<Perinci::CmdLine>, but nevertheless some routines are reusable outside
+it.
+
+=for Pod::Coverage ^(.+)$
 
 =head1 FUNCTIONS
 
@@ -713,10 +720,9 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2012 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-

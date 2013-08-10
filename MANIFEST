@@ -17,3 +17,4 @@ t/complete_hash_key.t
 t/complete_riap_func.t
 t/release-pod-coverage.t
 t/release-pod-syntax.t
+t/release-rinci.t
