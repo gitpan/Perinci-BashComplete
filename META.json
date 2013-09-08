@@ -4,7 +4,7 @@
       "Steven Haryanto <stevenharyanto@gmail.com>"
    ],
    "dynamic_config" : 0,
-   "generated_by" : "Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.131560",
+   "generated_by" : "Dist::Zilla version 4.300035, CPAN::Meta::Converter version 2.132140",
    "license" : [
       "perl_5"
    ],
@@ -36,8 +36,6 @@
          "requires" : {
             "List::MoreUtils" : "0",
             "Log::Any" : "0",
-            "Perinci::Access" : "0.03",
-            "Perinci::Access::InProcess" : "0",
             "Perinci::Sub::GetArgs::Argv" : "0.13",
             "Rinci" : "v1.1.10",
             "UUID::Random" : "0",
@@ -46,9 +44,13 @@
       },
       "test" : {
          "requires" : {
+            "Capture::Tiny" : "0",
             "File::Which" : "0",
             "File::chdir" : "0",
-            "Perinci::Examples" : "0.08"
+            "Perinci::Access" : "0",
+            "Perinci::Examples" : "0.08",
+            "Test::More" : "0.88",
+            "blib" : "0"
          }
       }
    },
@@ -59,6 +61,6 @@
          "url" : "http://github.com/sharyanto/perl-Perinci-BashComplete"
       }
    },
-   "version" : "0.30"
+   "version" : "0.31"
 }
 

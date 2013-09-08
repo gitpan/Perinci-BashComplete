@@ -3,7 +3,7 @@ NAME
     argument over Riap
 
 VERSION
-    version 0.30
+    version 0.31
 
 SYNOPSIS
      # require'd by Perinci::CmdLine when bash completion is enabled

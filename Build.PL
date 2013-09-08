@@ -17,7 +17,7 @@ my %module_build_args = (
     "Steven Haryanto <stevenharyanto\@gmail.com>"
   ],
   "dist_name" => "Perinci-BashComplete",
-  "dist_version" => "0.30",
+  "dist_version" => "0.31",
   "license" => "perl",
   "module_name" => "Perinci::BashComplete",
   "recommends" => {},
@@ -25,8 +25,6 @@ my %module_build_args = (
   "requires" => {
     "List::MoreUtils" => 0,
     "Log::Any" => 0,
-    "Perinci::Access" => "0.03",
-    "Perinci::Access::InProcess" => 0,
     "Perinci::Sub::GetArgs::Argv" => "0.13",
     "Rinci" => "v1.1.10",
     "UUID::Random" => 0,
@@ -34,9 +32,13 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
+    "Capture::Tiny" => 0,
     "File::Which" => 0,
     "File::chdir" => 0,
-    "Perinci::Examples" => "0.08"
+    "Perinci::Access" => 0,
+    "Perinci::Examples" => "0.08",
+    "Test::More" => "0.88",
+    "blib" => 0
   }
 );
 

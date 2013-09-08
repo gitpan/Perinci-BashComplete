@@ -5,7 +5,7 @@ use strict;
 use warnings;
 use Log::Any '$log';
 
-our $VERSION = '0.30'; # VERSION
+our $VERSION = '0.31'; # VERSION
 
 require Exporter;
 our @ISA       = qw(Exporter);
@@ -680,7 +680,7 @@ Perinci::BashComplete - Bash completion routines for function & function argumen
 
 =head1 VERSION
 
-version 0.30
+version 0.31
 
 =head1 SYNOPSIS
 
